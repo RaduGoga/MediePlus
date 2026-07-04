@@ -4,7 +4,7 @@
 
 Îți planifică timpul, te ține în ritm și te ajută să reții ce înveți — cu AI și o
 mascotă (Lumi) care prinde viață odată cu tine. Consistență, momentum, recovery și
-un heatmap de activitate — dar pe sesiuni de focus, nu pe note.
+un heatmap de activitate — dar pe sesiuni de învățat, nu pe note.
 
 ## Stack
 
@@ -48,9 +48,6 @@ src/
     planner.ts          # plan adaptiv (re-planificare)
     gemini.ts           # apel server + fallback local
 ```
+## License
 
-## Build
-
-```bash
-npm run build && npm start
-```
+Aplicatie Open-Source făcută de mine, Ilie-Goga Radu (+ un pic de Claude :) ) 2026
