@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background-color: theme("colors.soft-white");
+  color: theme("colors.navy");
+}
+
+/* Lumina lui Lumi „scapă" discret în fundal — semnătura vizuală a aplicației. */
+body {
+  background-image: radial-gradient(
+    70% 32rem at 50% -6rem,
+    rgba(110, 231, 200, 0.14),
+    transparent 70%
+  );
+  background-repeat: no-repeat;
+}
+
+/* Toată aplicația „respiră" — tranziții line, nimic agresiv. */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Fără salt orizontal când scrollbar-ul apare/dispare între pagini. */
+  scrollbar-gutter: stable;
+}
+
+/* Tranziție de pagină: doar opacitate (fără translate), rapidă — zero jitter. */
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.page-fade {
+  animation: page-fade 0.18s ease-out;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl2 bg-white shadow-card border border-slate-100 p-5;
+  }
+
+  .card-dark {
+    @apply rounded-xl2 bg-navy text-soft-white shadow-card p-5;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5
+      text-sm font-semibold transition-all duration-200 active:scale-[0.97]
+      disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-mint text-navy hover:shadow-glow;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-navy hover:bg-slate-100;
+  }
+
+  .btn-dark {
+    @apply btn bg-navy text-soft-white hover:bg-navy-soft;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full bg-mint/15 px-2.5 py-1
+      text-xs font-medium text-navy;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm
+      outline-none transition focus:border-mint focus:ring-2 focus:ring-mint/30;
+  }
+
+  /* Etichete jucăușe: font de titlu + un punct mentă, fără MAJUSCULE stridente. */
+  .label {
+    @apply inline-flex items-center gap-1.5 font-display text-sm font-bold text-navy;
+  }
+  .label::before {
+    content: "";
+    @apply inline-block h-2 w-2 rounded-full bg-mint;
+  }
+
+  /* Varianta pentru cardurile închise (navy). */
+  .label-dark {
+    @apply inline-flex items-center gap-1.5 font-display text-sm font-bold text-mint;
+  }
+  .label-dark::before {
+    content: "";
+    @apply inline-block h-2 w-2 rounded-full bg-mint;
+  }
+}
+
+/* Scrollbar discret */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 999px;
+}
